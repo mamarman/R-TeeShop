@@ -1,0 +1,171 @@
+@extends('layouts.template')
+@section('content')
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="admin/deshboard">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">ระบบจัดพนักงาน</a></li>
+                    <li class="breadcrumb-item active">เพิ่มพนักงาน</li>
+                </ol>
+            </div>
+            <h4 class="page-title">เพิ่มพนักงาน</h4>
+        </div>
+    </div>
+</div>
+
+@include('admin.elements.errors')
+@include('admin.elements.message')
+
+@csrf
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="admin/user" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">Username</label>
+                        <div class="col-3">
+                            <input type="test" name="username" value="{{ old('username') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-2 col-form-label">Password</label>
+                        <div class="col-3">
+                            <input type="password" name="password" value="{{ old('password') }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">E-mail</label>
+                        <div class="col-5">
+                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                            <label for="" class="col-2 col-form-label">คำนำหน้าชื่อ</label>
+                            <div class="col-2">
+                                <select name="title_id" class="form-control">
+                                    <option>นาย</option>
+                                    <option>นาง</option>
+                                    <option>นางสาว</option>
+                                </select>
+                            </div>
+                            <label for="" class="col-1 col-form-label">ชื่อ</label>
+                            <div class="col-3">
+                                <input type="text" name="firstname" value="{{ old('firstname') }}" class="form-control" >
+                            </div>
+                            <label for="" class="col-1 col-form-label">นามสกุล</label>
+                            <div class="col-3">
+                                <input type="text" name="lastname" value="{{ old('lastname') }}" class="form-control" >
+                            </div>
+                        </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">วันเกิด</label>
+                        <div class="col-3">
+                            <input type="date" name="birthdate" value="{{ old('birthdate') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-2 col-form-label">หมายเลขพนักงาน</label>
+                        <div class="col-3">
+                            <input type="text" name="personal_id" value="{{ old('personal_id') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">ที่อยู่เลขที่</label>
+                        <div class="col-2">
+                            <input type="text" name="address_no" value="{{ old('address_no') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">หมู่</label>
+                        <div class="col-3">
+                            <input type="text" name="moo" value="{{ old('moo') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">หมู่บ้าน</label>
+                        <div class="col-3">
+                            <input type="text" name="village" value="{{ old('village') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">ซอย</label>
+                        <div class="col-2">
+                            <input type="text" name="soi" value="{{ old('soi') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">ถนน</label>
+                        <div class="col-3">
+                            <input type="text" name="road" value="{{ old('road') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-1 col-form-label">ตำบล</label>
+                        <div class="col-3">
+                             <input type="text" name="tumbon" value="{{ old('tumbon') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">อำเภอ</label>
+                        <div class="col-3">
+                            <input type="text" name="amphur" value="{{ old('amphur') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-2 col-form-label">จังหวัด</label>
+                        <div class="col-2">
+                            <input type="text" name="province" value="{{ old('province') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">รหัสไปรษณีย์</label>
+                        <div class="col-2">
+                            <input type="text" name="postcode" value="{{ old('postcode') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">มือถือ</label>
+                        <div class="col-3">
+                            <input type="text" name="telephone" value="{{ old('telephone') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">รหัสประจำช่อง</label>
+                        <div class="col-2">
+                            <input type="text" name="channel_id" value="{{ old('channel_id') }}" class="form-control" >
+                        </div>
+                        <label for="" class="col-1 col-form-label">Url ประจำช่อง</label>
+                        <div class="col-3">
+                            <input type="text" name="channel_url" value="{{ old('channel_url') }}" class="form-control" >
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">เพิ่มเติม</label>
+                        <div class="col-10">
+                            <input type="text" name="other_contact" value="{{ old('other_contact') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                        <label for="" class="col-2 col-form-label">updated_user</label>
+                        <div class="col-10">
+                            <input type="text" name="updated_user" value="{{ old('updated_user') }}"class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row mb-12">
+                            <label for="" class="col-2 col-form-label">remember_token</label>
+                            <div class="col-10">
+                                <input type="text" name="remember_token" value="{{ old('remember_token') }}"class="form-control" >
+                            </div>
+                        </div>
+                    <hr>
+                    <div class="col-lg-12">
+                        <div class="form-group row mb-3">
+                            <div class="col-2">
+                                <a href="admin/user" class="btn btn-primary btn-rounded" style="width:100%;"><i class="mdi mdi-arrow-left-circle mr-2"></i> ย้อนกลับ</a>
+                            </div>
+                            <div class="col-2">
+                                <a href="admin/user/create" class="btn btn-warning btn-rounded" style="width:100%;"><i class="mdi mdi-refresh mr-2"></i> เริ่มใหม่</a>
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-success btn-rounded" style="width:100%;"><i class="mdi mdi-plus-circle mr-2"></i> เพิ่มลูกค้า</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
